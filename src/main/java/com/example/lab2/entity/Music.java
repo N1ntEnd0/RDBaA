@@ -3,15 +3,27 @@ package com.example.lab2.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name="music")
 public class Music {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
 
     private String authorName;
+
+    @ManyToOne
+    private Users user;
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
 
     public Music() {
     }
